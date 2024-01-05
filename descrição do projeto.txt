@@ -1,0 +1,156 @@
+//ESTRUTURA HTML BÁSICA DA APLICAÇÃO
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <div>
+        <input type="text" placeholder="O que tenho que fazer...">
+        <button>Adicionar</button>
+        <ul>
+            <li>
+                <img src="./images/checked.png" alt="check-na-tarefa"/>
+                <p>Fazer Academia</p>
+                <img src="./images/trash.png" alt="apagar-a-tarefa"/>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+
+
+
+//ESTILIZAÇÃO:
+
+
+reset da página:
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+}
+
+
+
+
+estilizando o fundo da página:
+
+body{
+    background: url("./images/background.png");
+}
+
+
+
+
+estilizando o fundo da lista ou conteúdo:
+
+.container{
+    background-color: #d1d1d1;
+    width: 500px;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 100px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
+
+
+estilizando caixinha de digitar a tarefa:
+
+.input-add-task{
+    border:none;
+    border-radius:10px;
+    width: 300px;
+    height: 40px;
+    padding-left: 10px;
+}
+
+
+
+
+estilizando o botão adicionar:
+
+.button-add-task{
+    border:none;
+    border-radius: 10px;
+    height: 40px;
+    background-color: #002339;
+    color:#fff;
+    font-size: 17px;
+    padding:0 15px;
+    cursor: pointer;
+    float:right;
+    font-weight: 700;
+}
+
+.button-add-task:hover{
+    opacity: 0.8;
+}
+
+.button-add-task:active{
+    opacity: 0.6;
+}
+
+
+
+estilizando a lista de tarefas:
+
+
+.list-tasks{
+    width: 100%;
+    list-style: none;
+    margin-top: 30px;
+}
+
+
+
+estilizando o campo da tarefa :
+
+.task{
+    background-color: #f2f2f2;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+
+img {
+    height: 25px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.task:hover img{
+    opacity: 1;
+}
+
+
+
+
+//CÓDIGO:
+
+
+-> armazenar o valor digitado em input
+-> armazenar o item botão
+-> armazenar o  campo tarefa
+-> ao clicar no botão deve-se disparar um evento em que o valor digitado em input irá ser adicionar ao campo tarefa 
+-> mostrar a nova tarefa na tela
+-> ao clicar em tarefa deve-se disparar um evento em que uma classe é adicionada ao campo tarefa
+-> ao clicar na lixeira, deve-se dispara um evento em que a tarefa deve ser excluida da lista
+-> salvar as tarefas
