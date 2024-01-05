@@ -147,10 +147,69 @@ img {
 
 
 -> armazenar o valor digitado em input
+	const input = document.querySelector('.input-add-task')
+
 -> armazenar o item botão
+	const button = document.querySelector('.button-add-task')
+
 -> armazenar o  campo tarefa
+	const listaCompleta = document.querySelector('.list-tasks')
+	let minhaListaDeItens = []
+
 -> ao clicar no botão deve-se disparar um evento em que o valor digitado em input irá ser adicionar ao campo tarefa 
+	button.addEventListener('click', adicionarNovaTarefa)
+	function adicionarNovaTarefa() {
+    		minhaListaDeItens.push({
+        	tarefa: input.value,
+        	concluida: false,
+    		})
+    		mostrarTarefas()
+    		input.value = ''
+	}
+
+
 -> mostrar a nova tarefa na tela
+
+	function mostrarTarefas() {
+    	let novaLi = ''
+    	minhaListaDeItens.forEach((item, posicao) => {
+        	novaLi = novaLi + `
+            	<li class="task ${item.concluida && "done"}">
+                	<img src="./images/checked.png" alt="check-na-tarefa" onclick="concluirTarefa(${posicao})"/>
+                	<p>${item.tarefa}</p>
+                	<img src="./images/trash.png" alt="apagar-a-tarefa" onclick="deletarItem(${posicao})" />
+            	</li>
+            	`
+    	})
+
+    	listaCompleta.innerHTML = novaLi
+    	localStorage.setItem('lista', JSON.stringify(minhaListaDeItens))
+	}
+
+
 -> ao clicar em tarefa deve-se disparar um evento em que uma classe é adicionada ao campo tarefa
+	function concluirTarefa(posicao){
+    		minhaListaDeItens[posicao].concluida = !minhaListaDeItens[posicao].concluida
+    		mostrarTarefas()
+	}
+
+
 -> ao clicar na lixeira, deve-se dispara um evento em que a tarefa deve ser excluida da lista
+	function deletarItem(posicao){
+    		minhaListaDeItens.splice(posicao, 1)
+    		mostrarTarefas()
+	}
+
+
 -> salvar as tarefas
+	function recarregarTela(){
+    		const tarefasDoLocalStorage = localStorage.getItem('lista')
+    		if(tarefasDoLocalStorage){
+        	minhaListaDeItens = JSON.parse(tarefasDoLocalStorage)
+    		}
+
+    		mostrarTarefas()    
+    
+	}
+
+	recarregarTela()
